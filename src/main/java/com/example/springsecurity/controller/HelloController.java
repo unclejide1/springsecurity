@@ -35,7 +35,7 @@ public class HelloController {
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public  String hello(){
         return  "Hello World";
     }
@@ -56,6 +56,7 @@ public class HelloController {
         //get the jwt token
         final  String jwt = jwtTokenUtil.generateToken(userDetails);
 
+        // send the jwt as a response
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
